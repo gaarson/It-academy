@@ -1,22 +1,17 @@
-var value = [35235, 5235, 532];
-var result = 25;
-var text = 'asggggggggggggggggggggggggggggggggggggasgasgasgasgasg';
+//Work with functions
+var x = 14;
+var y = 15;
 
-result = 10 / 5;
+var name1 = 'Ivan';
+var name2 = 'Iwan';
 
-console.log(result);
-
-var x = document.getElementById('number1')
-var y = document.getElementById('number2')
-
-// Объекты для взаимодействия с браузером и их методы
-document.write(text + '</br>');
-document.write(result);
-console.log(x, y)
-console.log(document.getElementById('1'));
-
-document.getElementById('submit').addEventListener('click', function() {
-	document.write(+x.value + +y.value);
-}) 
+function Funk (x, y) {
+	if(y == undefined || x == undefined) {
+		document.write('One of arguments is not specified');
+	} else {
+		document.write(x + y);
+	}
+	}
 
 
+Funk(1, null);
