@@ -1,30 +1,36 @@
 var coffee = [
-	{
+	{	
+		id: 1,
 		name: "Руссиано",
 		price: 39,
 		sugar: ''
 	},
 	{
+		id: 2,
 		name: "Латте",
 		price: 39,
 		sugar: ''
 	},
-	{
+	{	
+		id: 3,
 		name: "Капучино",
 		price: 39,
 		sugar: ''
 	},
 	{
+		id: 4,
 		name: "Чай",
 		price: 39,
 		sugar: ''
 	},
 	{
+		id: 521,
 		name: "Эспрессо",
 		price: 39,
 		sugar: ''
 	},
 	{
+		id: 14,
 		name: "Макиато",
 		price: 39,
 		sugar: ''
@@ -32,11 +38,11 @@ var coffee = [
 ]
 
 function CoffeeMachine() {
-	this.coffeeList = coffee;
-	this.money = 0;
-	this.delivery = 0;
+	var money = 0;
+	var delivery = 0;
 
-	this.selectedCoffee = '';
+	this.coffeeList = coffee;
+	this.selectedCoffee = [];
 	this.fill = false;
 
 	this.coffeeRender = function(container) {
@@ -49,7 +55,7 @@ function CoffeeMachine() {
 					<p>${item.name}<p>
 					<input 
 						type="submit" 
-						data-name=${item.name} 
+						data-name=${item.id}
 						value="Налить" 
 						class="coffeeItem"> 
 				</li>`
@@ -58,12 +64,29 @@ function CoffeeMachine() {
 		})
 	}
 
-	this.setCoffee = function(coffee) {
-		this.selectedCoffee = coffee;
+	var setDelivery = function(id) {
+		console.log(this.coffeeList);
+		this.selectedCoffee = this.coffeeList.filter(function(item) {
+			return item.id == id;
+		});
+		console.log(this.selectedCoffee);
+		delivery = money - this.selectedCoffee[0].price;
+	}
+
+	this.getDelivery = function() {
+		return delivery;
+	}
+
+	this.setCoffee = function(id, price) {
+		money = price;
+		console.log(this.selectedCoffee);
+		setDelivery.call(this, id);
 	}
 
 	this.fillCoffee = function(container) {
 		container.innerHTML = 'Налито ' + this.selectedCoffee;
 	}
+
+
 
 }
