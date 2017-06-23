@@ -3,6 +3,6 @@ export function User(_name, _age) {
 	this.age = _age;
 
 	this.renderUser = function() {
-		document.write(`${this.name} and ${this.age} </br>`)
+		document.getElementById('list').innerHTML += (`${this.name} and ${this.age} </br>`)
 	}
 }
