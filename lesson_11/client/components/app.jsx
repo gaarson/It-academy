@@ -48,6 +48,7 @@ export default class App extends React.Component {
 						return <User name={item.name} key={item.id} age={item.age} />
 					})
 				}
+				{true && <Form />}
 			</div>
 		)
 	}
