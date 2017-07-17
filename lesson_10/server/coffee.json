@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+[
+	{	
+		"id": 1,
+		"name": "qwgqw",
+		"age": 39
+	},
+	{	
+		"id": 51,
+		"name": "qwgs",
+		"age": 39
+	},
+	{	
+		"id": 2,
+		"name": "Rqwsq",
+		"age": 39
+	},
+	{	
+		"id": 215,
+		"name": "Rusqwg",
+		"age": 39124
+	},
+]
+=======
+[{"id":1,"name":"Rus","age":39},{"id":1,"name":"Rus","age":39}]
+>>>>>>> 619a0bb24e165e72199b9623eb2cbd6c7f8d84fc
