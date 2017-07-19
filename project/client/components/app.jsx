@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({decks}) => ({
-	decks
-})
+import Sidebar from './Sidebar.jsx';
 
-const mapDispatchToProps = dispatch => ({
+const mapStateToProps = (props, params) => {
+	console.log(props, params)
 
-})
-
-class App extends React.Component {
-  render() {
-    console.log(this.props);
-    return (
-      <div>hello</div>
-    )
-  }
+	return {
+		props
+	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const App = ({deckId, children}) => {
+		return (
+			<div>
+				<Sidebar />
+			</div>
+		)
+	
+}
+
+export default connect(mapStateToProps)(App);

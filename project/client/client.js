@@ -14,9 +14,8 @@ const store = createStore(combineReducers(reducers), applyMiddleware(thunkMiddle
 
 function run() {
 	let state = store.getState();
-  console.log(state);
 	render(
-    <Provider store={store}>
+		<Provider store={store}>
 			<Router>
 				<div>
 					<Route exact path='/' component={App} />
