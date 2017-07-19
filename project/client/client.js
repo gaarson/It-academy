@@ -9,6 +9,8 @@ import { fetchData } from './actions/index.js';
 import * as reducers from './reducers/index.js';
 
 import App from './components/app.jsx';
+import VisibleCards from './components/VisibleCards.jsx';
+import NewCardModal from './components/NewCardModal.jsx';
 
 const store = createStore(combineReducers(reducers), applyMiddleware(thunkMiddleware));
 
@@ -19,6 +21,8 @@ function run() {
 			<Router>
 				<div>
 					<Route exact path='/' component={App} />
+					<Route path='/deck/:deckId' component={VisibleCards} />
+					<Route path="/deck/:deckId" component={NewCardModal} />
 				</div>
 			</Router>
 		</Provider>,

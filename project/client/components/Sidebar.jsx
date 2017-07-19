@@ -10,14 +10,15 @@ const mapStateToProps = ({decks, addingDeck}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	addDeck: (name) => dispatch(decks.addDeck(name)),
-	showAddDeck: () => dispatch(decks.showAddDeck()),
-	hideAddDeck: () => dispatch(add.hideAddDeck())
+	addDeck: (name) => dispatch(deck.addDeck(name)),
+	showAddDeck: () => dispatch(deck.showAddDeck()),
+	hideAddDeck: () => dispatch(deck.hideAddDeck())
 })
 
 class Sidebar extends React.Component {
 	componentDidUpdate() {
-
+		let el = ReactDOM.findDOMNode(this.refs.add);
+		if(el) el.focus();
 	}
 
 	createDeck(evt) {
@@ -30,20 +31,20 @@ class Sidebar extends React.Component {
 
 	render() {
 		let props = this.props;
-
+		console.log(props);
 		return (
 			<div className='sidebar'>
 				<h2> All Decks </h2>
 				<ul> 
 					{
 						props.decks.map((deck, i) => {
-							<li key={i}>
+							return <li key={deck.id}>
 								<Link to={`/deck/${deck.id}`}> {deck.name} </Link>
 							</li>
 						})
 					}
 				</ul>
-				{ props.addingDeck && <input ref="add" onKeyPress={this.createDeck} />}
+				{ props.addingDeck && <input ref="add" onKeyPress={(e) => this.createDeck(e)} />}
 			</div>
 		)
 	}
