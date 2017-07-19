@@ -1,12 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({decks}) = ({
+const mapStateToProps = ({decks}) => ({
 	decks
 })
 
+const mapDispatchToProps = dispatch => ({
+
+})
+
 class App extends React.Component {
-	this.props.decks
+  render() {
+    console.log(this.props);
+    return (
+      <div>hello</div>
+    )
+  }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
