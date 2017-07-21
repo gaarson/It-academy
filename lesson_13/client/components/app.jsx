@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getUsers } from './../requests/request.js';
+
 import { searchUser } from './../actions/actions.js';
 
+import { getUsers } from './../actions/index.js';
 import {app} from '../actions/index.js';
 import { connect } from 'react-redux';
 
@@ -10,13 +11,14 @@ import { User } from './user.jsx';
 import { Form } from './form.jsx';
 
 const mapStateToProps = ({App}) => ({
-	users: app.users,
-	userList: app.userList,
-	user: app.user
+	users: App.users,
+	userList: App.userList,
+	user: App.user
 })
 
 const mapDispatchToProps = dispatch => ({
-	changeUserData: (e) => dispatch(app.changeUserData(e.target))
+	changeUserData: (e) => dispatch(app.changeUserData(e.target)),
+	getUsers: () => dispatch(getUsers.pending()),
 })
 
 class App extends React.Component {
@@ -27,6 +29,9 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+
+		if(!this.props.users.length) this.props.getUsers();
+
 		// getUsers().then(users => {
 		// 	this.setState({users});
 		// 	this.searchUser();
@@ -35,7 +40,6 @@ class App extends React.Component {
 
 	render() {
 		console.log(this.props);
-		// const {userList} = this.state;
 		return (
 			<div>	
 				<Form setUserData={this.props.changeUserData}/>

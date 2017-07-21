@@ -1,4 +1,4 @@
-import {APP} from '../consts/index.js';
+import {APP, GET_USERS} from '../consts/index.js';
 
 export const App = (state = {
 	userList: [],
@@ -9,6 +9,14 @@ export const App = (state = {
 		case APP.CHANGE_USER_DATA: 
 			console.log(action);
 			return state;
+		case GET_USERS.GET_USERS_SUCCESS:
+			console.log('success', action);
+			return state;
+		case GET_USERS.GET_USERS_ERROR:
+			console.log('error', action);
+			return state;
 		default: return state;
 	}
 }
+
+{...state, }
