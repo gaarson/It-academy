@@ -1,4 +1,4 @@
-import CardModal from './CardModal/.jsx';
+import CardModal from './CardModal.jsx';
 import {connect} from 'react-redux';
 import {card} from '../actions/index.js';
 
