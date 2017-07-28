@@ -34,7 +34,7 @@ export const Reducer_1 = (state={
             return Object.assign({},state,{videoName: action.name});
 
         case "VIDEO_SUCCESS": 
-            console.log(action);
+            console.log(action.videos);
             return state;
 
 		default: return state;
