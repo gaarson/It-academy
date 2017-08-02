@@ -7,10 +7,7 @@ const express = require('express'),
 const file = fs.readFileSync(path.join(__dirname, '../userlist.json'));
 
 const userList = JSON.parse(file);
-let TOKEN = {};
-YouTubeModel.getToken((token) => {
-	TOKEN = token
-});
+let TOKEN = await YouTubeModel.getToken();
 
 router.get('/list', (req, res) => {
   res.send(userList);
