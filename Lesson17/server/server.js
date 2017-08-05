@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(),
     path = require('path');
-    bodyParser = require('body-parser');// достает req.body
+    bodyParser = require('body-parser'),
+    db = require('./database.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,4 +15,6 @@ app.delete('/delete/:id', require('./routes/route1.js'));
 app.put('/put/:id', require('./routes/route1.js'));
 app.get('*',(req,res)=> {res.send('Не найдено ничего')});
 
-app.listen(3000,console.log('Server on 3000'));
+db.connect(() => {
+  app.listen(3000,console.log('Server on 3000'));
+})

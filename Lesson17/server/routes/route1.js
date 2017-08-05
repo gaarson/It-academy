@@ -1,16 +1,19 @@
 const express = require('express'),
 	  path = require('path'),
 	  fs = require('fs'),
+    usersModel = require('../models/users.js'),
 	  router = express.Router();
 	  YouTubeModel = require('../models/index.js');
 
 const file = fs.readFileSync(path.join(__dirname, '../userlist.json'));
 
 const userList = JSON.parse(file);
-let TOKEN = await YouTubeModel.getToken();
+//let TOKEN = await YouTubeModel.getToken();
 
 router.get('/list', (req, res) => {
-  res.send(userList);
+  usersModel.getUsers().then(users => {
+    res.send(users);
+  });
 });
 
 router.get('/videos', (req, res) => {
@@ -27,15 +30,21 @@ router.get('/videos', (req, res) => {
 
 router.post('/add_user', (req, res) => {
 	console.log(req.body)
-	if(req.body.name!='' && req.body.age!=''){
-		let newUser=req.body;
-		newUser.id= +new Date();
-		userList.push(newUser);
-		// fs.writeFileSync(path.join(__dirname,'../userlist.json'), JSON.stringify(userList));
-		res.send(userList);
-	}else{
-		res.send("Empty field");
-	}
+  
+  usersModel.newUser(req.body).then(success => {
+    res.json(success);
+  }).catch(err => {
+    console.log('ERROR', err);
+  })
+	//if(req.body.name!='' && req.body.age!=''){
+		//let newUser=req.body;
+		//newUser.id= +new Date();
+		//userList.push(newUser);
+		//// fs.writeFileSync(path.join(__dirname,'../userlist.json'), JSON.stringify(userList));
+		//res.send(userList);
+	//}else{
+		//res.send("Empty field");
+	//}
 })
 
 router.delete('/delete/:id', (req,res)=>{
